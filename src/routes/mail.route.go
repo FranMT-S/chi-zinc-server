@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"github.com/FranMT-S/Challenge-Go/src/controller"
+	"github.com/FranMT-S/chi-zinc-server/src/controller"
 	"github.com/go-chi/chi/v5"
 )
 

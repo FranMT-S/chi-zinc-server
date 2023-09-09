@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/FranMT-S/Challenge-Go/src/constants"
-	myDatabase "github.com/FranMT-S/Challenge-Go/src/db"
-	"github.com/FranMT-S/Challenge-Go/src/model"
+	"github.com/FranMT-S/chi-zinc-server/src/constants"
+	myDatabase "github.com/FranMT-S/chi-zinc-server/src/db"
+	"github.com/FranMT-S/chi-zinc-server/src/model"
 	"github.com/go-chi/chi/v5"
 )
 

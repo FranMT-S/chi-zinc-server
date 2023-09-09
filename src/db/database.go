@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/FranMT-S/Challenge-Go/src/constants"
-	myMiddleware "github.com/FranMT-S/Challenge-Go/src/middleware"
-	"github.com/FranMT-S/Challenge-Go/src/model"
+	"github.com/FranMT-S/chi-zinc-server/src/constants"
+	myMiddleware "github.com/FranMT-S/chi-zinc-server/src/middleware"
+	"github.com/FranMT-S/chi-zinc-server/src/model"
 )
 
 var z_database *zincDatabase

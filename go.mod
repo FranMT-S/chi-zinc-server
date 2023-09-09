@@ -1,4 +1,4 @@
-module github.com/FranMT-S/Challenge-Go
+module github.com/FranMT-S/chi-zinc-server
 
 go 1.20
 

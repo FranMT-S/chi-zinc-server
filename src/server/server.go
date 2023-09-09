@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	myMiddleware "github.com/FranMT-S/Challenge-Go/src/middleware"
-	"github.com/FranMT-S/Challenge-Go/src/routes"
+	myMiddleware "github.com/FranMT-S/chi-zinc-server/src/middleware"
+	"github.com/FranMT-S/chi-zinc-server/src/routes"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )

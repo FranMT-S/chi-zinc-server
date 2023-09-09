@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/FranMT-S/Challenge-Go/src/constants"
-	myServer "github.com/FranMT-S/Challenge-Go/src/server"
-	// "github.com/FranMT-S/Challenge-Go/src/core"
-	// "github.com/FranMT-S/Challenge-Go/src/core/bulker"
-	// "github.com/FranMT-S/Challenge-Go/src/core/parser"
+	"github.com/FranMT-S/chi-zinc-server/src/constants"
+	myServer "github.com/FranMT-S/chi-zinc-server/src/server"
+	// "github.com/FranMT-S/chi-zinc-server/src/core"
+	// "github.com/FranMT-S/chi-zinc-server/src/core/bulker"
+	// "github.com/FranMT-S/chi-zinc-server/src/core/parser"
 )
 
 func main() {
