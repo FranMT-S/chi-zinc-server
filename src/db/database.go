@@ -1,10 +1,13 @@
 package myDatabase
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/FranMT-S/chi-zinc-server/src/constants"
 	myMiddleware "github.com/FranMT-S/chi-zinc-server/src/middleware"
@@ -26,28 +29,143 @@ func ZincDatabase() *zincDatabase {
 }
 
 func (db zincDatabase) GetIndexData() (io.ReadCloser, *model.ResponseError) {
-	url := os.Getenv("URL") + "index/mailsTest3"
 
-	dbReq, err := http.NewRequest("GET", url, nil)
+	url := os.Getenv("URL") + "index/" + os.Getenv("INDEX")
+
+	dbResp, err := db.doRequest("GET", url, nil)
 	if err != nil {
-		fmt.Println("Error al crear la solicitud:", err)
+		return nil, err
+	}
+
+	return dbResp.Body, nil
+}
+
+func (db zincDatabase) GetAllMailsSummary(from, max int) (*model.Hits, *model.ResponseError) {
+
+	var ResponseData model.ResponseSearchData
+
+	query := fmt.Sprintf(`
+		{
+			"search_type": "matchall",
+			"sort_fields": ["-Date"],
+			"from": %v,
+			"max_results": %v,
+			"_source": [
+			"To", "From","Date", "Subject"
+			]
+		}`, from, max)
+
+	url := os.Getenv("URL") + os.Getenv("INDEX") + "/_search"
+
+	dbResp, errResponse := db.doRequest("POST", url, strings.NewReader(query))
+
+	if errResponse != nil {
+		return nil, errResponse
+	}
+
+	defer dbResp.Body.Close()
+
+	err := json.NewDecoder(dbResp.Body).Decode(&ResponseData)
+
+	if err != nil {
+
+		return nil, model.NewResponseError(http.StatusInternalServerError, constants.STATUS_ERROR,
+			"Hubo un error en el servidor: "+err.Error())
+
+	}
+
+	return &ResponseData.Hits, nil
+}
+
+func (db zincDatabase) FindMailsSummary(term string, from, max int) (*model.Hits, *model.ResponseError) {
+
+	var ResponseData model.ResponseSearchData
+
+	query := fmt.Sprintf(`
+		{
+		"search_type": "querystring",
+		"query": {
+			"term": "%v",
+			"field":"_all"
+		},
+		"sort_fields": ["-Date"],
+		"from": %v,
+		"max_results": %v,
+		"_source": [
+			"Date", "From","Subject", "To"
+		]
+	}`, term, from, max)
+
+	url := os.Getenv("URL") + os.Getenv("INDEX") + "/_search"
+
+	dbResp, errResponse := db.doRequest("POST", url, strings.NewReader(query))
+
+	if errResponse != nil {
+		return nil, errResponse
+	}
+
+	defer dbResp.Body.Close()
+
+	err := json.NewDecoder(dbResp.Body).Decode(&ResponseData)
+
+	if err != nil {
+
+		return nil, model.NewResponseError(http.StatusInternalServerError, constants.STATUS_ERROR,
+			"Hubo un error en el servidor: "+err.Error())
+
+	}
+
+	return &ResponseData.Hits, nil
+}
+
+func (db zincDatabase) GetMail(id string) (*model.Mail, *model.ResponseError) {
+
+	var ResponseData *model.ResponseDocData
+
+	url := os.Getenv("URL") + os.Getenv("INDEX") + "/_doc/" + id
+
+	dbResp, errResponse := db.doRequest("GET", url, nil)
+
+	if errResponse != nil {
+		return nil, errResponse
+	}
+
+	defer dbResp.Body.Close()
+
+	err := json.NewDecoder(dbResp.Body).Decode(&ResponseData)
+
+	if err != nil {
+
+		return nil, model.NewResponseError(http.StatusInternalServerError, constants.STATUS_ERROR,
+			"Hubo un error en el servidor: "+err.Error())
+
+	}
+
+	return &ResponseData.Mail, nil
+}
+
+func (db zincDatabase) doRequest(method string, url string, body io.Reader) (*http.Response, *model.ResponseError) {
+
+	// Realizar la solicitud
+	dbReq, err := http.NewRequest(method, url, body)
+	if err != nil {
+		log.Println("Error al crear la solicitud:", err)
 		return nil, model.NewResponseError(http.StatusBadRequest, constants.STATUS_ERROR, constants.ERROR_CREATE_REQUEST)
 	}
 
 	myMiddleware.ZincHeader(dbReq)
 
-	// Realizar la solicitud
 	dbResp, err := db.client.Do(dbReq)
 	if err != nil {
-		fmt.Println("Error al realizar la solicitud:", err)
+		log.Println("Error al realizar la solicitud:", err)
 		return nil, model.NewResponseError(http.StatusBadRequest, constants.STATUS_ERROR, constants.ERROR_REQUEST)
 	}
 
 	// Verificar el código de estado de la respuesta
 	if dbResp.StatusCode != http.StatusOK {
-		fmt.Println("Respuesta no exitosa. Código de estado:", dbResp.Status)
+		log.Println("Respuesta no exitosa. Código de estado:", dbResp.Status)
 		return nil, model.NewResponseError(dbResp.StatusCode, constants.STATUS_ERROR, constants.ERROR_REQUEST)
 	}
 
-	return dbResp.Body, nil
+	return dbResp, nil
 }

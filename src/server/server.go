@@ -54,7 +54,7 @@ func (s *server) MountHandlers() {
 			res.Write([]byte("Hello World!"))
 		})
 
-		r.Mount("/", routes.MailRouter())
+		r.Mount("/mails", routes.MailRouter())
 	})
 
 }
