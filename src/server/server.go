@@ -8,6 +8,7 @@ import (
 	"github.com/FranMT-S/chi-zinc-server/src/routes"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/go-chi/cors"
 )
 
 type Iserve interface {
@@ -45,6 +46,14 @@ func (s *server) MountHandlers() {
 	s.router.Use(middleware.CleanPath)
 	s.router.Use(middleware.AllowContentType("application/json"))
 	s.router.Use(myMiddleware.JsonMiddleware)
+	s.router.Use(cors.Handler(cors.Options{
+		AllowedOrigins:   []string{"https://*", "http://*"},
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
+		ExposedHeaders:   []string{"Link"},
+		AllowCredentials: false,
+		MaxAge:           300, // Maximum value not ignored by any of major browsers
+	}))
 	// s.router.Use(myMiddleware.ZincHeader)
 
 	// Mount all handlers here
