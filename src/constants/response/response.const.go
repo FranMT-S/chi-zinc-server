@@ -1,4 +1,4 @@
-package constants
+package constants_response
 
 const (
 	STATUS_OK            = "OK"

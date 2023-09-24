@@ -8,10 +8,9 @@ import (
 func MailRouter() *chi.Mux {
 	router := chi.NewMux()
 
-	router.Get("/", controller.GetTotalMail)
-	router.Get("/all-sumary/from-{from}-max-{max}", controller.GetAllMailsSummary)
-	router.Get("/mail/{id}", controller.GetMail)
-	router.Post("/find-mails", controller.FindMailsSummary)
+	router.Get("/{id}", controller.GetMail)
+	router.Get("/from-{from}-max-{max}", controller.GetAllMailsSummary)
+	router.Get("/from-{from}-max-{max}-terms-{terms}", controller.FindMailsSummary)
 
 	return router
 }

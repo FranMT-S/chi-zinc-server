@@ -9,7 +9,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/FranMT-S/chi-zinc-server/src/constants"
+	constants_response "github.com/FranMT-S/chi-zinc-server/src/constants/response"
 	myMiddleware "github.com/FranMT-S/chi-zinc-server/src/middleware"
 	"github.com/FranMT-S/chi-zinc-server/src/model"
 )
@@ -69,7 +69,7 @@ func (db zincDatabase) GetAllMailsSummary(from, max int) (*model.Hits, *model.Re
 
 	if err != nil {
 
-		return nil, model.NewResponseError(http.StatusInternalServerError, constants.STATUS_ERROR,
+		return nil, model.NewResponseError(http.StatusInternalServerError, constants_response.STATUS_ERROR,
 			"Hubo un error en el servidor: "+err.Error())
 
 	}
@@ -110,7 +110,7 @@ func (db zincDatabase) FindMailsSummary(term string, from, max int) (*model.Hits
 
 	if err != nil {
 
-		return nil, model.NewResponseError(http.StatusInternalServerError, constants.STATUS_ERROR,
+		return nil, model.NewResponseError(http.StatusInternalServerError, constants_response.STATUS_ERROR,
 			"Hubo un error en el servidor: "+err.Error())
 
 	}
@@ -136,7 +136,7 @@ func (db zincDatabase) GetMail(id string) (*model.Mail, *model.ResponseError) {
 
 	if err != nil {
 
-		return nil, model.NewResponseError(http.StatusInternalServerError, constants.STATUS_ERROR,
+		return nil, model.NewResponseError(http.StatusInternalServerError, constants_response.STATUS_ERROR,
 			"Hubo un error en el servidor: "+err.Error())
 
 	}
@@ -150,7 +150,7 @@ func (db zincDatabase) doRequest(method string, url string, body io.Reader) (*ht
 	dbReq, err := http.NewRequest(method, url, body)
 	if err != nil {
 		log.Println("Error al crear la solicitud:", err)
-		return nil, model.NewResponseError(http.StatusBadRequest, constants.STATUS_ERROR, constants.ERROR_CREATE_REQUEST)
+		return nil, model.NewResponseError(http.StatusBadRequest, constants_response.STATUS_ERROR, constants_response.ERROR_CREATE_REQUEST)
 	}
 
 	myMiddleware.ZincHeader(dbReq)
@@ -158,13 +158,13 @@ func (db zincDatabase) doRequest(method string, url string, body io.Reader) (*ht
 	dbResp, err := db.client.Do(dbReq)
 	if err != nil {
 		log.Println("Error al realizar la solicitud:", err)
-		return nil, model.NewResponseError(http.StatusBadRequest, constants.STATUS_ERROR, constants.ERROR_REQUEST)
+		return nil, model.NewResponseError(http.StatusBadRequest, constants_response.STATUS_ERROR, constants_response.ERROR_REQUEST)
 	}
 
 	// Verificar el código de estado de la respuesta
 	if dbResp.StatusCode != http.StatusOK {
 		log.Println("Respuesta no exitosa. Código de estado:", dbResp.Status)
-		return nil, model.NewResponseError(dbResp.StatusCode, constants.STATUS_ERROR, constants.ERROR_REQUEST)
+		return nil, model.NewResponseError(dbResp.StatusCode, constants_response.STATUS_ERROR, constants_response.ERROR_REQUEST)
 	}
 
 	return dbResp, nil

@@ -3,6 +3,7 @@ package myServer
 import (
 	"fmt"
 	"net/http"
+	"os"
 
 	myMiddleware "github.com/FranMT-S/chi-zinc-server/src/middleware"
 	"github.com/FranMT-S/chi-zinc-server/src/routes"
@@ -32,11 +33,10 @@ func Server() Iserve {
 
 func (_server *server) Start() {
 
-	_server.router.Use(middleware.Logger)
 	_server.MountHandlers()
 
-	fmt.Printf("Servidor escuchando en el puerto %s...\n", "3000")
-	http.ListenAndServe(":3000", _server.router)
+	fmt.Printf("Servidor escuchando en el puerto %s...\n", os.Getenv("PORT"))
+	http.ListenAndServe(":"+os.Getenv("PORT"), _server.router)
 
 }
 
@@ -45,7 +45,6 @@ func (s *server) MountHandlers() {
 	s.router.Use(middleware.Logger)
 	s.router.Use(middleware.CleanPath)
 	s.router.Use(middleware.AllowContentType("application/json"))
-	s.router.Use(myMiddleware.JsonMiddleware)
 	s.router.Use(cors.Handler(cors.Options{
 		AllowedOrigins:   []string{"https://*", "http://*"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
@@ -54,16 +53,18 @@ func (s *server) MountHandlers() {
 		AllowCredentials: false,
 		MaxAge:           300, // Maximum value not ignored by any of major browsers
 	}))
+	s.router.Use(myMiddleware.JsonMiddleware)
+	s.router.Use(myMiddleware.LogBookMiddleware)
 	// s.router.Use(myMiddleware.ZincHeader)
 
 	// Mount all handlers here
 	// s.router.Get("/", HelloWorld)
-	s.router.Route("/api", func(r chi.Router) {
+	s.router.Route("/", func(r chi.Router) {
 		r.Get("/", func(res http.ResponseWriter, req *http.Request) {
 			res.Write([]byte("Hello World!"))
 		})
 
-		r.Mount("/mails", routes.MailRouter())
+		r.Mount("/v1", routes.ApiV1Router())
 	})
 
 }

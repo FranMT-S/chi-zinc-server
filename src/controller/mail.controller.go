@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/FranMT-S/chi-zinc-server/src/constants"
+	constants_response "github.com/FranMT-S/chi-zinc-server/src/constants/response"
 	myDatabase "github.com/FranMT-S/chi-zinc-server/src/db"
 	"github.com/FranMT-S/chi-zinc-server/src/model"
 	"github.com/go-chi/chi/v5"
@@ -35,7 +35,7 @@ func GetTotalMail(res http.ResponseWriter, req *http.Request) {
 
 	if err != nil {
 		code = http.StatusInternalServerError
-		responseError = model.NewResponseError(code, constants.STATUS_ERROR, constants.ERROR_SERVER)
+		responseError = model.NewResponseError(code, constants_response.STATUS_ERROR, constants_response.ERROR_SERVER)
 
 		res.WriteHeader(code)
 		res.Write([]byte(responseError.Error()))
@@ -50,7 +50,7 @@ func GetTotalMail(res http.ResponseWriter, req *http.Request) {
 		"status":%v,
 		"msg":"%v",
 		"total":%v
-	}`, code, constants.STATUS_OK, ResponseIndexData.Stats.DocNum)))
+	}`, code, constants_response.STATUS_OK, ResponseIndexData.Stats.DocNum)))
 }
 
 func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
@@ -62,8 +62,8 @@ func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 	if errFrom != nil || errMax != nil {
 		error := model.ResponseError{
 			Status: http.StatusBadRequest,
-			Msg:    constants.STATUS_ERROR,
-			Err:    "Los datos ingreados deben ser numeros"}
+			Msg:    constants_response.STATUS_ERROR,
+			Err:    "Los datos ingresados deben ser numeros"}
 
 		res.WriteHeader(http.StatusBadRequest)
 		res.Write([]byte(error.Error()))
@@ -74,7 +74,7 @@ func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 	if from < 0 || max < 0 {
 		error := model.ResponseError{
 			Status: http.StatusBadRequest,
-			Msg:    constants.STATUS_ERROR,
+			Msg:    constants_response.STATUS_ERROR,
 			Err:    "Lo campos no pueden ser menores de 0"}
 
 		res.WriteHeader(http.StatusBadRequest)
@@ -114,27 +114,27 @@ func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 
 func FindMailsSummary(res http.ResponseWriter, req *http.Request) {
 
-	var requestMail model.RequestFindMail
+	from, errFrom := strconv.Atoi(chi.URLParam(req, "from"))
+	max, errMax := strconv.Atoi(chi.URLParam(req, "max"))
+	terms := chi.URLParam(req, "terms")
 	code := 0
 
-	err := json.NewDecoder(req.Body).Decode(&requestMail)
-
-	if err != nil {
+	if errFrom != nil || errMax != nil {
 		error := model.ResponseError{
 			Status: http.StatusBadRequest,
-			Msg:    constants.STATUS_ERROR,
-			Err:    "Los campos ingresados no son validos"}
+			Msg:    constants_response.STATUS_ERROR,
+			Err:    "Los datos ingresados deben ser numeros"}
 
 		res.WriteHeader(http.StatusBadRequest)
 		res.Write([]byte(error.Error()))
-		log.Println("Los campos ingresados no son validos")
+		log.Println("Los datos ingresados deben ser numeros")
 		return
 	}
 
-	if requestMail.From < 0 || requestMail.Max < 0 {
+	if from < 0 || max < 0 {
 		error := model.ResponseError{
 			Status: http.StatusBadRequest,
-			Msg:    constants.STATUS_ERROR,
+			Msg:    constants_response.STATUS_ERROR,
 			Err:    "Lo campos no pueden ser menores de 0"}
 
 		res.WriteHeader(http.StatusBadRequest)
@@ -143,7 +143,7 @@ func FindMailsSummary(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	dbHits, responseError := myDatabase.ZincDatabase().FindMailsSummary(requestMail.Terms, requestMail.From, requestMail.Max)
+	dbHits, responseError := myDatabase.ZincDatabase().FindMailsSummary(terms, from, max)
 
 	if responseError != nil {
 		code = http.StatusInternalServerError
