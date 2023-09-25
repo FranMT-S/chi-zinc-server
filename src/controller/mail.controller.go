@@ -3,56 +3,53 @@ package controller
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"strconv"
 
-	constants_response "github.com/FranMT-S/chi-zinc-server/src/constants/response"
+	constants_log "github.com/FranMT-S/chi-zinc-server/src/constants/log"
 	myDatabase "github.com/FranMT-S/chi-zinc-server/src/db"
+	_logs "github.com/FranMT-S/chi-zinc-server/src/logs"
 	"github.com/FranMT-S/chi-zinc-server/src/model"
 	"github.com/go-chi/chi/v5"
 )
 
-const ()
+/*
+Return all emails
+The function takes two URL query parameters, "from" and "max", which are used for result pagination.
 
-func GetTotalMail(res http.ResponseWriter, req *http.Request) {
+  - from (int): the "from" parameter represents the index from which the search will begin.
+  - max (int): The "max" parameter specifies the maximum number of elements to display.
 
-	code := 0
+If the request is successful the response is:
 
-	dbRespBody, responseError := myDatabase.ZincDatabase().GetIndexData()
-
-	if responseError != nil {
-		code = http.StatusInternalServerError
-		res.WriteHeader(responseError.Status)
-		res.Write([]byte(responseError.Error()))
-		log.Println("Error en la peticion a la base de datos:", responseError.Err)
-	}
-
-	defer dbRespBody.Close()
-
-	var ResponseIndexData model.ResponseIndexData
-	err := json.NewDecoder(dbRespBody).Decode(&ResponseIndexData)
-
-	if err != nil {
-		code = http.StatusInternalServerError
-		responseError = model.NewResponseError(code, constants_response.STATUS_ERROR, constants_response.ERROR_SERVER)
-
-		res.WriteHeader(code)
-		res.Write([]byte(responseError.Error()))
-		log.Println("Error al decodificar la respuesta JSON:", err)
-		return
-	}
-
-	code = http.StatusOK
-	res.WriteHeader(code)
-	res.Write([]byte(fmt.Sprintf(`
 	{
-		"status":%v,
-		"msg":"%v",
-		"total":%v
-	}`, code, constants_response.STATUS_OK, ResponseIndexData.Stats.DocNum)))
-}
+			"status":code,
+			"msg":"message",
+			"data":Hits
+	}
 
+where Hits is:
+
+	type Hits struct {
+		Total struct {
+			Value int `json:"value"`
+		} `json:"total"`
+
+		Hits []struct {
+			Index  string `json:"_index"`
+			ID     string `json:"_id"`
+			Source Hit    `json:"_source"`
+		} `json:"hits"`
+	}
+
+if failed then the response is:
+
+	type ResponseError struct {
+		Status int    `json:"Status"`
+		Msg    string `json:"Msg"`
+		Err    error  `json:"Err"`
+	}
+*/
 func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 
 	from, errFrom := strconv.Atoi(chi.URLParam(req, "from"))
@@ -60,34 +57,55 @@ func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 	code := 0
 
 	if errFrom != nil || errMax != nil {
-		error := model.ResponseError{
-			Status: http.StatusBadRequest,
-			Msg:    constants_response.STATUS_ERROR,
-			Err:    "Los datos ingresados deben ser numeros"}
+		err := model.NewResponseError(
+			http.StatusBadRequest,
+			constants_log.ERROR_FROM_MAX_IS_NOT_NUMBER,
+			fmt.Errorf(constants_log.ERROR_INVALID_PARAMS),
+		)
 
-		res.WriteHeader(http.StatusBadRequest)
-		res.Write([]byte(error.Error()))
-		log.Println("Los datos ingresados deben ser numeros")
+		_logs.LogSVG(
+			constants_log.FILE_NAME_ERROR_GENERAL,
+			constants_log.OPERATION_MAILS_REQUEST,
+			constants_log.ERROR_FROM_MAX_IS_NOT_NUMBER,
+			err.Err,
+		)
+
+		res.WriteHeader(err.Status)
+		res.Write([]byte(err.Error()))
+
 		return
 	}
 
 	if from < 0 || max < 0 {
-		error := model.ResponseError{
-			Status: http.StatusBadRequest,
-			Msg:    constants_response.STATUS_ERROR,
-			Err:    "Lo campos no pueden ser menores de 0"}
+		err := model.NewResponseError(
+			http.StatusBadRequest,
+			constants_log.ERROR_VALUE_LESS_ZERO,
+			fmt.Errorf(constants_log.ERROR_INVALID_PARAMS),
+		)
+
+		_logs.LogSVG(
+			constants_log.FILE_NAME_ERROR_GENERAL,
+			constants_log.OPERATION_MAILS_REQUEST,
+			constants_log.ERROR_VALUE_LESS_ZERO,
+			err.Err,
+		)
 
 		res.WriteHeader(http.StatusBadRequest)
-		res.Write([]byte(error.Error()))
-		log.Println("Lo campos no pueden ser menores de 0")
+		res.Write([]byte(err.Error()))
+
 		return
 	}
 
 	dbHits, responseError := myDatabase.ZincDatabase().GetAllMailsSummary(from, max)
 
 	if responseError != nil {
-		code = http.StatusInternalServerError
-		log.Println("Error en la peticion a la base de datos:", responseError.Err)
+		_logs.LogSVG(
+			constants_log.FILE_NAME_ERROR_GENERAL,
+			constants_log.OPERATION_DATABASE,
+			responseError.Msg,
+			responseError.Err,
+		)
+
 		res.WriteHeader(responseError.Status)
 		res.Write([]byte(responseError.Error()))
 		return
@@ -95,9 +113,21 @@ func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 
 	data, err := json.Marshal(dbHits)
 	if err != nil {
-		code = http.StatusInternalServerError
-		log.Println("Error en convertir a json la informacion")
-		res.WriteHeader(code)
+
+		err := model.NewResponseError(
+			http.StatusInternalServerError,
+			constants_log.ERROR_JSON_PARSE,
+			fmt.Errorf(constants_log.ERROR_JSON_PARSE),
+		)
+
+		_logs.LogSVG(
+			constants_log.FILE_NAME_ERROR_GENERAL,
+			constants_log.OPERATION_DATABASE,
+			constants_log.ERROR_JSON_PARSE,
+			err,
+		)
+
+		res.WriteHeader(err.Status)
 		res.Write([]byte(err.Error()))
 		return
 	}
@@ -112,6 +142,86 @@ func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 	}`, code, "OK", string(data))))
 }
 
+// Return all emails that match the request in the terms parameter
+// The function takes two URL query parameters, "from" and "max", which are used for result pagination.
+//
+//   - from (int): the "from" parameter represents the index from which the search will begin.
+//
+//   - max (int): The "max" parameter specifies the maximum number of elements to display.
+//
+//   - terms (string): the words or query that will be used for the search.
+//
+// If the request is successful the response is:
+//
+//	{
+//			"status":code,
+//			"msg":"message",
+//			"data":Hits
+//	}
+//
+// where Hits is:
+//
+//	type Hits struct {
+//		Total struct {
+//			Value int `json:"value"`
+//		} `json:"total"`
+//		Hits []struct {
+//			Index  string `json:"_index"`
+//			ID     string `json:"_id"`
+//			Source Hit    `json:"_source"`
+//		} `json:"hits"`
+//	}
+//
+// if failed then the response is:
+//
+//	type ResponseError struct {
+//		Status int    `json:"Status"`
+//		Msg    string `json:"Msg"`
+//		Err    error  `json:"Err"`
+//	}
+//
+// The searches in Terms are composed this way:
+//
+//  1. separation by a space = search for any match of the terms
+//
+//  2. + = returns all data where both terms appear
+//
+//  3. - = returns all data where the terms do not appear
+//
+//  4. * = returns all the data where it starts with the term
+//
+// # example:
+//
+//   - susan = find all matches of susan in all fields
+//   - susan bianca = find all matches of susan or bianca in all fields
+//   - -susan = all matches where susan is not in all fields
+//   - susan.bailey +bianca.ornelas = all matches where this susan and bianca.ornelas in all fields
+//   - susan* = all matches starting with susan in all fields
+//   - -susan*=all matches you start that do not start with susan in all fields
+//   - From: susan = all susan matches in the From field
+//   - -From: susan = all non-susan matches in the field
+//   - From: susan* = all matches in From that start with susan
+//   - -From: susan* = all matches in From that do not start with susan
+//   - +From:susan.bailey +To:bianca.ornelas = all matches in From de susan.bailey and in To de bianca.ornelas
+//
+// The fields where you can search are:
+//  1. Message_ID,
+//  2. From
+//  3. To
+//  4. Subject
+//  5. Cc
+//  6. Mime_Version
+//  7. Content_Type
+//  8. Content_Transfer_Encoding
+//  9. Bcc
+//  10. X_From
+//  11. X_To
+//  12. X_cc
+//  13. X_bcc
+//  14. X_Folder
+//  15. X_Origin
+//  16. X_FileName
+//  17. Content
 func FindMailsSummary(res http.ResponseWriter, req *http.Request) {
 
 	from, errFrom := strconv.Atoi(chi.URLParam(req, "from"))
@@ -120,34 +230,55 @@ func FindMailsSummary(res http.ResponseWriter, req *http.Request) {
 	code := 0
 
 	if errFrom != nil || errMax != nil {
-		error := model.ResponseError{
-			Status: http.StatusBadRequest,
-			Msg:    constants_response.STATUS_ERROR,
-			Err:    "Los datos ingresados deben ser numeros"}
+		err := model.NewResponseError(
+			http.StatusBadRequest,
+			constants_log.ERROR_FROM_MAX_IS_NOT_NUMBER,
+			fmt.Errorf(constants_log.ERROR_INVALID_PARAMS),
+		)
 
-		res.WriteHeader(http.StatusBadRequest)
-		res.Write([]byte(error.Error()))
-		log.Println("Los datos ingresados deben ser numeros")
+		_logs.LogSVG(
+			constants_log.FILE_NAME_ERROR_GENERAL,
+			constants_log.OPERATION_MAILS_REQUEST,
+			constants_log.ERROR_FROM_MAX_IS_NOT_NUMBER,
+			err.Err,
+		)
+
+		res.WriteHeader(err.Status)
+		res.Write([]byte(err.Error()))
+
 		return
 	}
 
 	if from < 0 || max < 0 {
-		error := model.ResponseError{
-			Status: http.StatusBadRequest,
-			Msg:    constants_response.STATUS_ERROR,
-			Err:    "Lo campos no pueden ser menores de 0"}
+		err := model.NewResponseError(
+			http.StatusBadRequest,
+			constants_log.ERROR_VALUE_LESS_ZERO,
+			fmt.Errorf(constants_log.ERROR_INVALID_PARAMS),
+		)
+
+		_logs.LogSVG(
+			constants_log.FILE_NAME_ERROR_GENERAL,
+			constants_log.OPERATION_MAILS_REQUEST,
+			constants_log.ERROR_VALUE_LESS_ZERO,
+			err.Err,
+		)
 
 		res.WriteHeader(http.StatusBadRequest)
-		res.Write([]byte(error.Error()))
-		log.Println("Lo campos no pueden ser menores de 0")
+		res.Write([]byte(err.Error()))
+
 		return
 	}
 
 	dbHits, responseError := myDatabase.ZincDatabase().FindMailsSummary(terms, from, max)
 
 	if responseError != nil {
-		code = http.StatusInternalServerError
-		log.Println("Error en la peticion a la base de datos:", responseError.Err)
+		_logs.LogSVG(
+			constants_log.FILE_NAME_ERROR_GENERAL,
+			constants_log.OPERATION_DATABASE,
+			responseError.Msg,
+			responseError.Err,
+		)
+
 		res.WriteHeader(responseError.Status)
 		res.Write([]byte(responseError.Error()))
 		return
@@ -155,9 +286,20 @@ func FindMailsSummary(res http.ResponseWriter, req *http.Request) {
 
 	data, err := json.Marshal(dbHits)
 	if err != nil {
-		code = http.StatusInternalServerError
-		log.Println("Error en convertir a json la informacion")
-		res.WriteHeader(code)
+		err := model.NewResponseError(
+			http.StatusInternalServerError,
+			constants_log.ERROR_JSON_PARSE,
+			fmt.Errorf(constants_log.ERROR_JSON_PARSE),
+		)
+
+		_logs.LogSVG(
+			constants_log.FILE_NAME_ERROR_GENERAL,
+			constants_log.OPERATION_DATABASE,
+			constants_log.ERROR_JSON_PARSE,
+			err,
+		)
+
+		res.WriteHeader(err.Status)
 		res.Write([]byte(err.Error()))
 		return
 	}
@@ -172,6 +314,49 @@ func FindMailsSummary(res http.ResponseWriter, req *http.Request) {
 	}`, code, "OK", string(data))))
 }
 
+// Return all emails that match with id param,
+// query parameters:.
+//
+//   - id (string): the id of the searched email.
+//
+// If the request is successful the response is:
+//
+//	{
+//			"status":code,
+//			"msg":"message",
+//			"data":Mail
+//	}
+//
+// where Mail is:
+//
+//	type Mail struct {
+//		Message_ID                string
+//		Date                      string
+//		From                      string
+//		To                        string
+//		Subject                   string
+//		Cc                        string
+//		Mime_Version              string
+//		Content_Type              string
+//		Content_Transfer_Encoding string
+//		Bcc                       string
+//		X_From                    string
+//		X_To                      string
+//		X_cc                      string
+//		X_bcc                     string
+//		X_Folder                  string
+//		X_Origin                  string
+//		X_FileName                string
+//		Content                   string
+//	}
+//
+// if failed then the response is:
+//
+//	type ResponseError struct {
+//		Status int    `json:"Status"`
+//		Msg    string `json:"Msg"`
+//		Err    error  `json:"Err"`
+//	}
 func GetMail(res http.ResponseWriter, req *http.Request) {
 
 	code := 0
@@ -181,8 +366,13 @@ func GetMail(res http.ResponseWriter, req *http.Request) {
 	dbMail, responseError := myDatabase.ZincDatabase().GetMail(id)
 
 	if responseError != nil {
-		code = http.StatusInternalServerError
-		log.Println("Error en la peticion a la base de datos:", responseError.Err)
+		_logs.LogSVG(
+			constants_log.FILE_NAME_ERROR_GENERAL,
+			constants_log.OPERATION_DATABASE,
+			responseError.Msg,
+			responseError.Err,
+		)
+
 		res.WriteHeader(responseError.Status)
 		res.Write([]byte(responseError.Error()))
 		return
@@ -190,9 +380,20 @@ func GetMail(res http.ResponseWriter, req *http.Request) {
 
 	data, err := dbMail.ToJsonBytes()
 	if err != nil {
-		code = http.StatusInternalServerError
-		log.Println("Error en convertir a json la informacion")
-		res.WriteHeader(code)
+		err := model.NewResponseError(
+			http.StatusInternalServerError,
+			constants_log.ERROR_JSON_PARSE,
+			fmt.Errorf(constants_log.ERROR_JSON_PARSE),
+		)
+
+		_logs.LogSVG(
+			constants_log.FILE_NAME_ERROR_GENERAL,
+			constants_log.OPERATION_DATABASE,
+			constants_log.ERROR_JSON_PARSE,
+			err,
+		)
+
+		res.WriteHeader(err.Status)
 		res.Write([]byte(err.Error()))
 		return
 	}

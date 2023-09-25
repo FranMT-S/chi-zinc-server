@@ -31,6 +31,7 @@ func Server() Iserve {
 	return _server
 }
 
+// start the server
 func (_server *server) Start() {
 
 	_server.MountHandlers()
@@ -46,6 +47,7 @@ func (s *server) MountHandlers() {
 	s.router.Use(middleware.CleanPath)
 	s.router.Use(middleware.AllowContentType("application/json"))
 	s.router.Use(cors.Handler(cors.Options{
+
 		AllowedOrigins:   []string{"https://*", "http://*"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
@@ -55,10 +57,7 @@ func (s *server) MountHandlers() {
 	}))
 	s.router.Use(myMiddleware.JsonMiddleware)
 	s.router.Use(myMiddleware.LogBookMiddleware)
-	// s.router.Use(myMiddleware.ZincHeader)
 
-	// Mount all handlers here
-	// s.router.Get("/", HelloWorld)
 	s.router.Route("/", func(r chi.Router) {
 		r.Get("/", func(res http.ResponseWriter, req *http.Request) {
 			res.Write([]byte("Hello World!"))

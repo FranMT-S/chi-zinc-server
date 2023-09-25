@@ -9,6 +9,9 @@ import (
 	_logs "github.com/FranMT-S/chi-zinc-server/src/logs"
 )
 
+/*
+creates a log to keep track of the routes consulted and values sent to the server
+*/
 func LogBookMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 

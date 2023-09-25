@@ -2,25 +2,21 @@ package model
 
 import "time"
 
-// Para Obtener el numero total de mensajes
-type Stats struct {
-	DocNum int `json:"doc_num"`
-}
-
-type ResponseIndexData struct {
-	Stats Stats `json:"stats"`
-}
-
 type ResponseSearchData struct {
 	Hits Hits `json:"hits"`
 }
 
+//  used to send a Mail
 type ResponseDocData struct {
 	Index string `json:"_index"`
 	ID    string `json:"_id"`
 	Mail  Mail   `json:"_source"`
 }
 
+// A hit represents a match as provided by [Zincsearch] models
+// represents a summary format of an email
+//
+// [Zincsearch]: https://zincsearch-docs.zinc.dev/api/search/search/#response
 type Hit struct {
 	To      string    `json:"To"`
 	From    string    `json:"From"`
@@ -28,6 +24,11 @@ type Hit struct {
 	Date    time.Time `json:"Date"`
 }
 
+// Represents a collection of Hits
+//
+// A Hits represents a match as provided by [Zincsearch] models
+//
+// [Zincsearch]: https://zincsearch-docs.zinc.dev/api/search/search/#response
 type Hits struct {
 	Total struct {
 		Value int `json:"value"`
@@ -40,6 +41,7 @@ type Hits struct {
 	} `json:"hits"`
 }
 
+// Basic structure of a post request
 type RequestFindMail struct {
 	Terms string `json:"Terms"`
 	From  int    `json:"From"`

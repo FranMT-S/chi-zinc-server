@@ -5,6 +5,7 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
+// a router returns with the endpoints to make email requests
 func MailRouter() *chi.Mux {
 	router := chi.NewMux()
 

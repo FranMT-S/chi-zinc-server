@@ -1,0 +1,79 @@
+
+// database
+func (db zincDatabase) GetIndexData() (io.ReadCloser, *model.ResponseError) {
+
+	url := os.Getenv("URL") + "index/" + os.Getenv("INDEX")
+
+	dbResp, err := db.doRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return dbResp.Body, nil
+}
+
+func GetTotalMail(res http.ResponseWriter, req *http.Request) {
+
+	code := 0
+
+	dbRespBody, responseError := myDatabase.ZincDatabase().GetIndexData()
+
+	if responseError != nil {
+		_logs.LogSVG(
+			constants_log.FILE_NAME_ERROR_GENERAL,
+			constants_log.OPERATION_DATABASE,
+			responseError.Msg,
+			responseError.Err,
+		)
+
+		res.WriteHeader(responseError.Status)
+		res.Write([]byte(responseError.Error()))
+
+		return
+	}
+
+	defer dbRespBody.Close()
+
+	var ResponseIndexData model.ResponseIndexData
+	err := json.NewDecoder(dbRespBody).Decode(&ResponseIndexData)
+
+	if err != nil {
+		code = http.StatusInternalServerError
+		responseError = model.NewResponseError(
+			code,
+			constants_log.ERROR_JSON_PARSE,
+			err,
+		)
+
+		_logs.LogSVG(
+			constants_log.FILE_NAME_ERROR_GENERAL,
+			constants_log.OPERATION_DATABASE,
+			responseError.Msg,
+			responseError.Err,
+		)
+
+		res.WriteHeader(code)
+		res.Write([]byte(responseError.Error()))
+		log.Println(constants_log.ERROR_JSON_PARSE+": ", err)
+		return
+	}
+
+	code = http.StatusOK
+	res.WriteHeader(code)
+	res.Write([]byte(fmt.Sprintf(`
+	{
+		"status":%v,
+		"msg":"%v",
+		"total":%v
+	}`, code, constants_response.STATUS_OK, ResponseIndexData.Stats.DocNum)))
+}
+
+// Modelo
+// Para Obtener el numero total de mensajes
+type Stats struct {
+	DocNum int `json:"doc_num"`
+}
+
+type ResponseIndexData struct {
+	Stats Stats `json:"stats"`
+}

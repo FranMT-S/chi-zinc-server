@@ -1,2 +1,16 @@
 Date,Method,URL,Body
 "Sat, 23 Sep 2023 17:50:06 CST",POST,/v1/api/mails/from-0-max-100-terms-*,"{""Terms"":""*"",""From"":0,""Max"":20}"
+"Sat, 23 Sep 2023 22:01:58 CST",GET,/v1/api/mails,
+"Sat, 23 Sep 2023 22:01:59 CST",GET,/v1/api/mails,
+"Sat, 23 Sep 2023 22:02:09 CST",GET,/v1/api/,
+"Sat, 23 Sep 2023 22:02:32 CST",GET,/v1/api/mails,
+"Sat, 23 Sep 2023 22:02:54 CST",GET,/v1/api/mails/from-0-max-100-terms-*,
+"Sat, 23 Sep 2023 22:03:05 CST",GET,/v1/api/mails/from-0-max-100-terms-*,
+"Sat, 23 Sep 2023 22:03:24 CST",GET,/v1/api/mails/21Y0vC6KU4W,
+"Sat, 23 Sep 2023 22:04:03 CST",GET,/v1/api/mails/from-0-max-20,
+"Sat, 23 Sep 2023 22:10:10 CST",GET,/v1/api/mails/from-0-max-20,
+"Sat, 23 Sep 2023 22:10:16 CST",GET,/v1/api/mails/from-0-max-20-terms-*,
+"Sat, 23 Sep 2023 22:12:55 CST",GET,/v1/api/mails/from-0-max-20-terms-*/,
+"Sat, 23 Sep 2023 22:13:01 CST",GET,/v1/api/mails/from-0-max-20-terms-*:,
+"Sat, 23 Sep 2023 22:16:45 CST",GET,/v1/api/mails/from-0-max-20-terms-*:,
+"Sat, 23 Sep 2023 22:16:57 CST",GET,/v1/api/mails/from-0-max-20-terms-*:,

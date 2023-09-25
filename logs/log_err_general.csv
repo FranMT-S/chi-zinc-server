@@ -1,0 +1,7 @@
+Date,Operation,description,Error
+"Sat, 23 Sep 2023 22:06:40 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": EOF"
+Date,Operation,description,Error
+"Sat, 23 Sep 2023 22:06:40 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": EOF"
+"Sat, 23 Sep 2023 22:13:01 CST",database,There was an error in the database request,
+"Sat, 23 Sep 2023 22:16:45 CST",database,There was an error in the database request,
+"Sat, 23 Sep 2023 22:16:57 CST",database,There was an error in the database request,invalid parameters entered

@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	constants_log "github.com/FranMT-S/chi-zinc-server/src/constants/logs"
+	constants_log "github.com/FranMT-S/chi-zinc-server/src/constants/log"
 )
 
 func createDirectoryLogIfNotExist() {
@@ -21,11 +21,15 @@ func createDirectoryLogIfNotExist() {
 }
 
 /*
-create a file log in format SVG
-fileName the name of the log file
-operation a name of the action where failed example database.
-description a description personal
-err any object errors detected
+adds a new log record to the file. If the file does not exist it will create it
+
+  - fileName the name of the log file
+
+  - operation a name of the action where failed example database.
+
+  - description a description personal
+
+  - err any object errors detected
 */
 func LogSVG(fileName, operation, description string, err error) {
 
@@ -64,6 +68,17 @@ func LogSVG(fileName, operation, description string, err error) {
 	Println("\nrecord added to log file: " + path)
 }
 
+/*
+adds a new log record to the logBook file. If the file does not exist it will create it.
+
+logbook records information about all requests
+
+  - method type of request, example: POST, GET, PUT, DELELETE
+
+  - url path route requested.
+
+  - body parameters sent by body
+*/
 func LogBookSVG(method, url, body string) {
 
 	createDirectoryLogIfNotExist()

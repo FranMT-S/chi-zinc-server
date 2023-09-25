@@ -7,9 +7,8 @@ import (
 )
 
 /*
-	Modelo de la estructura del correo
+model of mail used to stored in the database
 */
-
 type Mail struct {
 	Message_ID                string
 	Date                      string
@@ -31,12 +30,14 @@ type Mail struct {
 	Content                   string
 }
 
-// Devuelve un string del correo en formato Json
+// returns an email string in json format.
+// If it is not possible to return the json format, it returns an empty string
 func (mail Mail) String() string {
 	return mail.ToJson()
 }
 
-// Transforma el correo a JSON
+// returns an email string in json format.
+// If it is not possible to return the json format, it returns an empty string
 func (mail Mail) ToJson() string {
 	bytes, err := mail.ToJsonBytes()
 
@@ -48,11 +49,12 @@ func (mail Mail) ToJson() string {
 	return string(bytes)
 }
 
-// Transforma el correo a Json pero devuelve los datos en un arreglo de bytes
+// returns an array of bytes that represent the email in json format
 func (mail Mail) ToJsonBytes() ([]byte, error) {
 	return json.Marshal(mail)
 }
 
+// returns an email from an array of bytes that represent the format of the email
 func MailFromJson(_json []byte) Mail {
 	var mail Mail
 

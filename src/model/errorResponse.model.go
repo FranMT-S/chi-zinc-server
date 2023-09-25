@@ -3,12 +3,18 @@ package model
 import "fmt"
 
 type ResponseError struct {
-	Status int
-	Msg    string
-	Err    string
+	Status int    `json:"Status"`
+	Msg    string `json:"Msg"`
+	Err    error  `json:"Err"`
 }
 
-func NewResponseError(status int, msg string, err string) *ResponseError {
+// Return a Response Error
+// type ResponseError struct {
+// 	Status int    `json:"Status"`
+// 	Msg    string `json:"Msg"`
+// 	Err    error  `json:"Err"`
+// }
+func NewResponseError(status int, msg string, err error) *ResponseError {
 	return &ResponseError{status, msg, err}
 }
 
