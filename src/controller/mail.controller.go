@@ -46,9 +46,9 @@ where Hits is:
 if failed then the response is:
 
 	type ResponseError struct {
-		Status int    `json:"Status"`
-		Msg    string `json:"Msg"`
-		Err    error  `json:"Err"`
+		Status int    `json:"status"`
+		Msg    string `json:"msg"`
+		Err    error  `json:"error"`
 	}
 */
 func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
@@ -176,9 +176,9 @@ func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 // if failed then the response is:
 //
 //	type ResponseError struct {
-//		Status int    `json:"Status"`
-//		Msg    string `json:"Msg"`
-//		Err    error  `json:"Err"`
+//		Status int    `json:"status"`
+//		Msg    string `json:"msg"`
+//		Err    error  `json:"error"`
 //	}
 //
 // The searches in Terms are composed this way:
@@ -356,9 +356,9 @@ func FindMailsSummary(res http.ResponseWriter, req *http.Request) {
 // if failed then the response is:
 //
 //	type ResponseError struct {
-//		Status int    `json:"Status"`
-//		Msg    string `json:"Msg"`
-//		Err    error  `json:"Err"`
+//		Status int    `json:"status"`
+//		Msg    string `json:"msg"`
+//		Err    error  `json:"error"`
 //	}
 func GetMail(res http.ResponseWriter, req *http.Request) {
 

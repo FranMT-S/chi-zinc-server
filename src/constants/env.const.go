@@ -14,5 +14,5 @@ func InitializeVarEnviroment() {
 	os.Setenv("DB_PASSWORD", "Complexpass#123")
 	os.Setenv("PORT", "3000")
 
-	fmt.Println("Variables de entorno establecidas")
+	fmt.Println("Set environment variables")
 }

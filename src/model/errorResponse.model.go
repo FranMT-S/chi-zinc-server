@@ -3,16 +3,16 @@ package model
 import "fmt"
 
 type ResponseError struct {
-	Status int    `json:"Status"`
-	Msg    string `json:"Msg"`
-	Err    error  `json:"Err"`
+	Status int    `json:"status"`
+	Msg    string `json:"msg"`
+	Err    error  `json:"error"`
 }
 
 // Return a Response Error
 // type ResponseError struct {
-// 	Status int    `json:"Status"`
-// 	Msg    string `json:"Msg"`
-// 	Err    error  `json:"Err"`
+// 	Status int    `json:"status"`
+// 	Msg    string `json:"msg"`
+// 	Err    error  `json:"error"`
 // }
 func NewResponseError(status int, msg string, err error) *ResponseError {
 	return &ResponseError{status, msg, err}
