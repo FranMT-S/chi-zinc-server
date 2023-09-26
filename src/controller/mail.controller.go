@@ -230,7 +230,6 @@ func FindMailsSummary(res http.ResponseWriter, req *http.Request) {
 	terms := chi.URLParam(req, "terms")
 
 	code := 0
-
 	terms = strings.ReplaceAll(terms, "%20", " ")
 
 	if errFrom != nil || errMax != nil {
