@@ -22,7 +22,7 @@ Execute Command:
 
 Return a mailing list
 
- <details>
+ 
  <summary><code>GET</code> <code><b>/</b></code> <code>http://localhost:3000/v1/api/from-{from}-max-{max}</code></summary>
 
 The parameters are:
@@ -52,7 +52,7 @@ Failed response returns [Response Error Interface](#response-error)
 
 Find emails that match the requested query
 
- <details>
+ 
  <summary><code>GET</code> <code><b>/</b></code> <code>http://localhost:3000/v1/api/from-{from}-max-{max}-terms-{terms}</code></summary>
 
 The parameters are:
@@ -103,7 +103,7 @@ Failed response returns [Response Error Interface](#response-error)
 
 Return a mail
 
- <details>
+ 
  <summary><code>GET</code> <code><b>/</b></code> <code>http://localhost:3000/v1/api/{id}</code></summary>
 
 The parameters are:
