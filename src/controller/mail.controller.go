@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"strings"
 
 	constants_log "github.com/FranMT-S/chi-zinc-server/src/constants/log"
 	myDatabase "github.com/FranMT-S/chi-zinc-server/src/db"
@@ -182,7 +183,7 @@ func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 //
 // The searches in Terms are composed this way:
 //
-//  1. separation by a space = search for any match of the terms
+//  1. %20 instead of blank space = search for any match of the terms
 //
 //  2. + = returns all data where both terms appear
 //
@@ -193,16 +194,16 @@ func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 // # example:
 //
 //   - susan = find all matches of susan in all fields
-//   - susan bianca = find all matches of susan or bianca in all fields
+//   - susan%20bianca (instead of "susan bianca") = find all matches of susan or bianca in all fields
 //   - -susan = all matches where susan is not in all fields
 //   - susan.bailey +bianca.ornelas = all matches where this susan and bianca.ornelas in all fields
 //   - susan* = all matches starting with susan in all fields
 //   - -susan*=all matches you start that do not start with susan in all fields
-//   - From: susan = all susan matches in the From field
-//   - -From: susan = all non-susan matches in the field
-//   - From: susan* = all matches in From that start with susan
-//   - -From: susan* = all matches in From that do not start with susan
-//   - +From:susan.bailey +To:bianca.ornelas = all matches in From de susan.bailey and in To de bianca.ornelas
+//   - From:susan = all susan matches in the From field
+//   - -From:susan = all non-susan matches in the field
+//   - From:susan* = all matches in From that start with susan
+//   - -From:susan* = all matches in From that do not start with susan
+//   - +From:susan.bailey%20+To:bianca.ornelas = all matches in From de susan.bailey and in To de bianca.ornelas
 //
 // The fields where you can search are:
 //  1. Message_ID,
@@ -227,7 +228,10 @@ func FindMailsSummary(res http.ResponseWriter, req *http.Request) {
 	from, errFrom := strconv.Atoi(chi.URLParam(req, "from"))
 	max, errMax := strconv.Atoi(chi.URLParam(req, "max"))
 	terms := chi.URLParam(req, "terms")
+
 	code := 0
+
+	terms = strings.ReplaceAll(terms, "%20", " ")
 
 	if errFrom != nil || errMax != nil {
 		err := model.NewResponseError(
