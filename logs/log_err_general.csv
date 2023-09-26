@@ -32,3 +32,11 @@ Date,Operation,description,Error
 "Mon, 25 Sep 2023 00:32:30 CST",database,There was an error in the database request,invalid parameters entered
 "Mon, 25 Sep 2023 00:33:09 CST",database,There was an error in the database request,invalid parameters entered
 "Mon, 25 Sep 2023 00:35:12 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 00:05:40 CST",mails request,from or max must be numbers,invalid parameters entered
+"Tue, 26 Sep 2023 00:14:33 CST",mails request,from or max must be numbers,invalid parameters entered
+"Tue, 26 Sep 2023 00:14:46 CST",mails request,from or max must be numbers,invalid parameters entered
+"Tue, 26 Sep 2023 00:15:39 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:8020->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Tue, 26 Sep 2023 00:15:51 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:8022->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Tue, 26 Sep 2023 00:28:25 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:8238->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Tue, 26 Sep 2023 00:32:32 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 00:34:21 CST",database,There was an error in the database request,invalid parameters entered
