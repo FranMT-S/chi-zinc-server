@@ -77,7 +77,6 @@ func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 	}
 
 	dbHits, responseError := myDatabase.ZincDatabase().GetAllMailsSummary(from, max)
-
 	if responseError != nil {
 		_logs.LogSVG(
 			constants_log.FILE_NAME_ERROR_GENERAL,
@@ -192,9 +191,8 @@ func FindMailsSummary(res http.ResponseWriter, req *http.Request) {
 	terms := chi.URLParam(req, "terms")
 
 	code := 0
-	// Decodifica la cadena utilizando url.QueryUnescape
-	decodedString, err := url.QueryUnescape(terms)
 
+	decodedString, err := url.QueryUnescape(terms)
 	if err != nil {
 		errorResponse := model.NewResponseError(
 			http.StatusInternalServerError,
@@ -324,7 +322,6 @@ func GetMail(res http.ResponseWriter, req *http.Request) {
 	id := chi.URLParam(req, "id")
 
 	dbMail, responseError := myDatabase.ZincDatabase().GetMail(id)
-
 	if responseError != nil {
 		_logs.LogSVG(
 			constants_log.FILE_NAME_ERROR_GENERAL,

@@ -54,7 +54,6 @@ func (db zincDatabase) GetAllMailsSummary(from, max int) (*model.Hits, *model.Re
 	url := os.Getenv("URL") + os.Getenv("INDEX") + "/_search"
 
 	dbResp, errResponse := db.doRequest("POST", url, strings.NewReader(query))
-
 	if errResponse != nil {
 		return nil, errResponse
 	}
@@ -62,10 +61,8 @@ func (db zincDatabase) GetAllMailsSummary(from, max int) (*model.Hits, *model.Re
 	defer dbResp.Body.Close()
 
 	err := json.NewDecoder(dbResp.Body).Decode(&ResponseData)
-
 	if err != nil {
 		return nil, model.NewResponseError(http.StatusInternalServerError, constants_log.ERROR_JSON_PARSE, err)
-
 	}
 
 	return &ResponseData.Hits, nil
@@ -98,7 +95,6 @@ func (db zincDatabase) FindMailsSummary(term string, from, max int) (*model.Hits
 	url := os.Getenv("URL") + os.Getenv("INDEX") + "/_search"
 
 	dbResp, errResponse := db.doRequest("POST", url, strings.NewReader(query))
-
 	if errResponse != nil {
 		return nil, errResponse
 	}
@@ -106,11 +102,8 @@ func (db zincDatabase) FindMailsSummary(term string, from, max int) (*model.Hits
 	defer dbResp.Body.Close()
 
 	err := json.NewDecoder(dbResp.Body).Decode(&ResponseData)
-
 	if err != nil {
-
 		return nil, model.NewResponseError(http.StatusInternalServerError, constants_log.ERROR_JSON_PARSE, err)
-
 	}
 
 	return &ResponseData.Hits, nil
@@ -129,7 +122,6 @@ func (db zincDatabase) GetMail(id string) (*model.Mail, *model.ResponseError) {
 	url := os.Getenv("URL") + os.Getenv("INDEX") + "/_doc/" + id
 
 	dbResp, errResponse := db.doRequest("GET", url, nil)
-
 	if errResponse != nil {
 		return nil, errResponse
 	}
@@ -137,11 +129,8 @@ func (db zincDatabase) GetMail(id string) (*model.Mail, *model.ResponseError) {
 	defer dbResp.Body.Close()
 
 	err := json.NewDecoder(dbResp.Body).Decode(&ResponseData)
-
 	if err != nil {
-
 		return nil, model.NewResponseError(http.StatusInternalServerError, constants_log.ERROR_JSON_PARSE, err)
-
 	}
 
 	return &ResponseData.Mail, nil

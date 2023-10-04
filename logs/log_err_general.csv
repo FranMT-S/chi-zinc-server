@@ -300,3 +300,10 @@ Date,Operation,description,Error
 "Tue, 03 Oct 2023 11:36:05 CST",database,invalid data entered,invalid data entered
 "Tue, 03 Oct 2023 11:36:15 CST",database,invalid data entered,invalid data entered
 "Tue, 03 Oct 2023 11:36:40 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 22:02:12 CST",database,the data entered or the query form is not valid,the data entered or the query form is not valid
+"Tue, 03 Oct 2023 22:02:35 CST",database,the data entered or the query form is not valid,the data entered or the query form is not valid
+"Tue, 03 Oct 2023 22:44:30 CST",database,the data entered or the query form is not valid,the data entered or the query form is not valid
+"Tue, 03 Oct 2023 22:44:33 CST",database,the data entered or the query form is not valid,the data entered or the query form is not valid
+"Tue, 03 Oct 2023 22:44:34 CST",database,the data entered or the query form is not valid,the data entered or the query form is not valid
+"Tue, 03 Oct 2023 22:44:35 CST",database,the data entered or the query form is not valid,the data entered or the query form is not valid
+"Wed, 04 Oct 2023 00:24:04 CST",mails request,from or max must be numbers,invalid parameters entered
