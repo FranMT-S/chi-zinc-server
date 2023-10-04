@@ -23,7 +23,7 @@ Execute Command:
 Return a mailing list
 
  
- <summary><code>GET</code> <code><b>/</b></code> <code>http://localhost:3000/v1/api/from-{from}-max-{max}</code></summary>
+ <summary><code>GET</code> <code><b>/</b></code> <code>http://localhost:3000/v1/api/from={from}&max={max}</code></summary>
 
 The parameters are:
 - **from (int)**: index from where the search would start
@@ -53,7 +53,7 @@ Failed response returns [Response Error Interface](#response-error)
 Find emails that match the requested query
 
  
- <summary><code>GET</code> <code><b>/</b></code> <code>http://localhost:3000/v1/api/from-{from}-max-{max}-terms-{terms}</code></summary>
+ <summary><code>GET</code> <code><b>/</b></code> <code>http://localhost:3000/v1/api/from={from}&max={max}&terms={terms}</code></summary>
 
 The parameters are:
 - **from (int)**: index from where the search would start
@@ -71,7 +71,7 @@ The searches in Terms are composed this way:
  - `susan`  find all matches of susan in all fields
  - `susan%20bianca` (instead of "susan bianca")  find all matches of susan or bianca in all fields
  - `-susan`  all matches where susan is not in all fields
- - `susan.bailey +bianca.ornelas`  all matches where this susan and bianca.ornelas in all fields
+ - `susan.bailey%20+bianca.ornelas`  all matches where this susan and bianca.ornelas in all fields
  - `susan*`  all matches starting with susan in all fields
  - `-susan*` all matches you start that do not start with susan in all fields
  - `From:susan`   all susan matches in the From field

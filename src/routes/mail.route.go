@@ -5,13 +5,13 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-// a router returns with the endpoints to make email requests
+// MailRouter a router returns with the endpoints to make email requests
 func MailRouter() *chi.Mux {
 	router := chi.NewMux()
 
 	router.Get("/{id}", controller.GetMail)
-	router.Get("/from-{from}-max-{max}", controller.GetAllMailsSummary)
-	router.Get("/from-{from}-max-{max}-terms-{terms}", controller.FindMailsSummary)
+	router.Get("/from={from}&max={max}", controller.GetAllMailsSummary)
+	router.Get("/from={from}&max={max}&terms={terms}", controller.FindMailsSummary)
 
 	return router
 }

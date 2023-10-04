@@ -29,30 +29,13 @@ func ZincDatabase() *zincDatabase {
 	return z_database
 }
 
-// Return a Hits that containst information of mails request
+// GetAllMailsSummary return a Hits object that containst information of mails request
 // The function takes two URL query parameters, "from" and "max", which are used for result pagination.
 //
 // - from (int): the "from" parameter represents the index from which the search will begin.
 // - max (int): The "max" parameter specifies the maximum number of elements to display.
 //
-//	type Hits struct {
-//	    Total struct {
-//	        Value int `json:"value"`
-//	    } `json:"total"`
-//	    Hits []struct {
-//	        Index  string `json:"_index"`
-//	        ID     string `json:"_id"`
-//	        Source Hit    `json:"_source"`
-//	    } `json:"hits"`
-//	}
-//
-// if the request failed return a ResponseError:
-//
-//	type ResponseError struct {
-//	    Status int
-//	    Msg    string
-//	    Err    error
-//	}
+// if the request failed return a ResponseError object
 func (db zincDatabase) GetAllMailsSummary(from, max int) (*model.Hits, *model.ResponseError) {
 
 	var ResponseData model.ResponseSearchData
@@ -88,35 +71,11 @@ func (db zincDatabase) GetAllMailsSummary(from, max int) (*model.Hits, *model.Re
 	return &ResponseData.Hits, nil
 }
 
-// Return all emails that match the request in the terms parameter
+// GetAllMailsSummary return a Hits object that containst information of mails that match the request in the terms parameter
+//
 // The function takes two URL query parameters, "from" and "max", which are used for result pagination.
 //
-//   - from (int): the "from" parameter represents the index from which the search will begin.
-//
-//   - max (int): The "max" parameter specifies the maximum number of elements to display.
-//
-//   - terms (string): the words or query that will be used for the search.
-//
-// Hit:
-//
-//	type Hits struct {
-//			Total struct {
-//		 		Value int `json:"value"`
-//		 	} `json:"total"`
-//		 	Hits []struct {
-//		 		Index  string `json:"_index"`
-//		  		ID     string `json:"_id"`
-//		  		Source Hit    `json:"_source"`
-//		  	} `json:"hits"`
-//		 }
-//
-// if the request failed return a ResponseError:
-//
-//	type ResponseError struct {
-//	    Status int
-//	    Msg    string
-//	    Err    error
-//	}
+// if the request failed return a ResponseError object
 func (db zincDatabase) FindMailsSummary(term string, from, max int) (*model.Hits, *model.ResponseError) {
 
 	var ResponseData model.ResponseSearchData
@@ -157,18 +116,12 @@ func (db zincDatabase) FindMailsSummary(term string, from, max int) (*model.Hits
 	return &ResponseData.Hits, nil
 }
 
-// Return a Mail that match with id param,
+// GetMail return a ResponseDocData object that containt the mail that match with id param,
 // query parameters:.
 //
 //   - id (string): the id of the searched email.
 //
-// if the request failed return a ResponseError:
-//
-//	type ResponseError struct {
-//	    Status int
-//	    Msg    string
-//	    Err    error
-//	}
+// if the request failed return a ResponseError object
 func (db zincDatabase) GetMail(id string) (*model.Mail, *model.ResponseError) {
 
 	var ResponseData *model.ResponseDocData
@@ -194,20 +147,15 @@ func (db zincDatabase) GetMail(id string) (*model.Mail, *model.ResponseError) {
 	return &ResponseData.Mail, nil
 }
 
-// Execute a request to database.
-// if the request failed return a ResponseError:
+// doRequest Execute a request to database.
 //
-//	type ResponseError struct {
-//	    Status int
-//	    Msg    string
-//	    Err    error
-//	}
+// if the request failed return a ResponseError
 func (db zincDatabase) doRequest(method string, url string, body io.Reader) (*http.Response, *model.ResponseError) {
 
 	dbReq, err := http.NewRequest(method, url, body)
 	if err != nil {
 		log.Println(constants_log.ERROR_DATA_BASE_REQUEST+": ", err)
-		return nil, model.NewResponseError(http.StatusBadRequest, constants_log.ERROR_DATA_BASE_CREATE_REQUEST, err)
+		return nil, model.NewResponseError(http.StatusBadRequest, constants_log.ERROR_DATA_BASE_REQUEST, err)
 	}
 
 	myMiddleware.ZincHeader(dbReq)
@@ -219,7 +167,7 @@ func (db zincDatabase) doRequest(method string, url string, body io.Reader) (*ht
 	}
 
 	if dbResp.StatusCode != http.StatusOK {
-		return nil, model.NewResponseError(dbResp.StatusCode, constants_log.ERROR_DATA_BASE_REQUEST, fmt.Errorf(constants_log.ERROR_INVALID_PARAMS))
+		return nil, model.NewResponseError(dbResp.StatusCode, constants_log.ERROR_INVALID_DATA_ENTERED, fmt.Errorf(constants_log.ERROR_INVALID_DATA_ENTERED))
 	}
 
 	return dbResp, nil

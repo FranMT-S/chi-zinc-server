@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"net/url"
 	"strconv"
-	"strings"
 
 	constants_log "github.com/FranMT-S/chi-zinc-server/src/constants/log"
 	myDatabase "github.com/FranMT-S/chi-zinc-server/src/db"
@@ -15,13 +15,12 @@ import (
 )
 
 /*
-Return all emails
-The function takes two URL query parameters, "from" and "max", which are used for result pagination.
+GetAllMailsSummary return all emails, takes two URL query parameters, "from" and "max", which are used for result pagination.
 
   - from (int): the "from" parameter represents the index from which the search will begin.
   - max (int): The "max" parameter specifies the maximum number of elements to display.
 
-If the request is successful the response is:
+If the request is successful return:
 
 	{
 			"status":code,
@@ -29,27 +28,7 @@ If the request is successful the response is:
 			"data":Hits
 	}
 
-where Hits is:
-
-	type Hits struct {
-		Total struct {
-			Value int `json:"value"`
-		} `json:"total"`
-
-		Hits []struct {
-			Index  string `json:"_index"`
-			ID     string `json:"_id"`
-			Source Hit    `json:"_source"`
-		} `json:"hits"`
-	}
-
-if failed then the response is:
-
-	type ResponseError struct {
-		Status int    `json:"status"`
-		Msg    string `json:"msg"`
-		Err    error  `json:"error"`
-	}
+if failed then return a ResponseError object
 */
 func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 
@@ -143,7 +122,7 @@ func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 	}`, code, "OK", string(data))))
 }
 
-// Return all emails that match the request in the terms parameter
+// FindMailsSummary return all emails that match the request in the terms parameter
 // The function takes two URL query parameters, "from" and "max", which are used for result pagination.
 //
 //   - from (int): the "from" parameter represents the index from which the search will begin.
@@ -152,7 +131,7 @@ func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 //
 //   - terms (string): the words or query that will be used for the search.
 //
-// If the request is successful the response is:
+// If the request is successful return:
 //
 //	{
 //			"status":code,
@@ -162,24 +141,7 @@ func GetAllMailsSummary(res http.ResponseWriter, req *http.Request) {
 //
 // where Hits is:
 //
-//	type Hits struct {
-//		Total struct {
-//			Value int `json:"value"`
-//		} `json:"total"`
-//		Hits []struct {
-//			Index  string `json:"_index"`
-//			ID     string `json:"_id"`
-//			Source Hit    `json:"_source"`
-//		} `json:"hits"`
-//	}
-//
-// if failed then the response is:
-//
-//	type ResponseError struct {
-//		Status int    `json:"status"`
-//		Msg    string `json:"msg"`
-//		Err    error  `json:"error"`
-//	}
+// if failed then return a ResponseError object
 //
 // The searches in Terms are composed this way:
 //
@@ -230,7 +192,30 @@ func FindMailsSummary(res http.ResponseWriter, req *http.Request) {
 	terms := chi.URLParam(req, "terms")
 
 	code := 0
-	terms = strings.ReplaceAll(terms, "%20", " ")
+	// Decodifica la cadena utilizando url.QueryUnescape
+	decodedString, err := url.QueryUnescape(terms)
+
+	if err != nil {
+		errorResponse := model.NewResponseError(
+			http.StatusInternalServerError,
+			constants_log.ERROR_QUERY_DECODE,
+			err,
+		)
+
+		_logs.LogSVG(
+			constants_log.FILE_NAME_ERROR_GENERAL,
+			constants_log.OPERATION_MAILS_REQUEST,
+			constants_log.ERROR_FROM_MAX_IS_NOT_NUMBER,
+			err,
+		)
+
+		res.WriteHeader(errorResponse.Status)
+		res.Write([]byte(errorResponse.Error()))
+
+		return
+	}
+
+	terms = decodedString
 
 	if errFrom != nil || errMax != nil {
 		err := model.NewResponseError(
@@ -317,12 +302,13 @@ func FindMailsSummary(res http.ResponseWriter, req *http.Request) {
 	}`, code, "OK", string(data))))
 }
 
-// Return all emails that match with id param,
+// GetMail return all emails that match with id param,
+//
 // query parameters:.
 //
 //   - id (string): the id of the searched email.
 //
-// If the request is successful the response is:
+// If the request is successful return:
 //
 //	{
 //			"status":code,
@@ -330,36 +316,7 @@ func FindMailsSummary(res http.ResponseWriter, req *http.Request) {
 //			"data":Mail
 //	}
 //
-// where Mail is:
-//
-//	type Mail struct {
-//		Message_ID                string
-//		Date                      string
-//		From                      string
-//		To                        string
-//		Subject                   string
-//		Cc                        string
-//		Mime_Version              string
-//		Content_Type              string
-//		Content_Transfer_Encoding string
-//		Bcc                       string
-//		X_From                    string
-//		X_To                      string
-//		X_cc                      string
-//		X_bcc                     string
-//		X_Folder                  string
-//		X_Origin                  string
-//		X_FileName                string
-//		Content                   string
-//	}
-//
-// if failed then the response is:
-//
-//	type ResponseError struct {
-//		Status int    `json:"status"`
-//		Msg    string `json:"msg"`
-//		Err    error  `json:"error"`
-//	}
+// if failed then return is ResponseError
 func GetMail(res http.ResponseWriter, req *http.Request) {
 
 	code := 0

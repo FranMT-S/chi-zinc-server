@@ -21,7 +21,7 @@ func createDirectoryLogIfNotExist() {
 }
 
 /*
-adds a new log record to the file. If the file does not exist it will create it
+LogSVG adds a new log record to the file. If the file does not exist it will create it
 
   - fileName the name of the log file
 
@@ -69,7 +69,7 @@ func LogSVG(fileName, operation, description string, err error) {
 }
 
 /*
-adds a new log record to the logBook file. If the file does not exist it will create it.
+LogBookSVG adds a new log record to the logBook file. If the file does not exist it will create it.
 
 logbook records information about all requests
 
@@ -115,7 +115,7 @@ func isNotExist(name string) bool {
 	return os.IsNotExist(err)
 }
 
-// Execute a log.Println but in red text
+// Println Execute a log.Println but in red text
 func Println(v ...any) {
 	ColorRed()
 	log.Println(v...)

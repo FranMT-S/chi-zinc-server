@@ -22,6 +22,7 @@ type server struct {
 	router *chi.Mux
 }
 
+// Server returns a single server instance
 func Server() Iserve {
 
 	if _server == nil {
@@ -31,17 +32,17 @@ func Server() Iserve {
 	return _server
 }
 
-// start the server
+// Start initialize the server
 func (_server *server) Start() {
 
-	_server.MountHandlers()
+	_server.mountHandlers()
 
-	fmt.Printf("Servidor escuchando en el puerto %s...\n", os.Getenv("PORT"))
+	fmt.Printf("Server listening on port %s...\n", os.Getenv("PORT"))
 	http.ListenAndServe(":"+os.Getenv("PORT"), _server.router)
 
 }
 
-func (s *server) MountHandlers() {
+func (s *server) mountHandlers() {
 	// Mount all Middleware here
 	s.router.Use(middleware.Logger)
 	s.router.Use(middleware.CleanPath)
@@ -55,6 +56,7 @@ func (s *server) MountHandlers() {
 		AllowCredentials: false,
 		MaxAge:           300, // Maximum value not ignored by any of major browsers
 	}))
+
 	s.router.Use(myMiddleware.JsonMiddleware)
 	s.router.Use(myMiddleware.LogBookMiddleware)
 

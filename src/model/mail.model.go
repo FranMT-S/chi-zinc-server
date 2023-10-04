@@ -7,7 +7,7 @@ import (
 )
 
 /*
-model of mail used to stored in the database
+Mail is the model of mail used to stored in the database
 */
 type Mail struct {
 	Message_ID                string
@@ -30,17 +30,16 @@ type Mail struct {
 	Content                   string
 }
 
-// returns an email string in json format.
+// String returns an email string in json format.
 // If it is not possible to return the json format, it returns an empty string
 func (mail Mail) String() string {
 	return mail.ToJson()
 }
 
-// returns an email string in json format.
+// ToJson returns an email string in json format.
 // If it is not possible to return the json format, it returns an empty string
 func (mail Mail) ToJson() string {
 	bytes, err := mail.ToJsonBytes()
-
 	if err != nil {
 		log.Println(err)
 		return ""
@@ -49,12 +48,12 @@ func (mail Mail) ToJson() string {
 	return string(bytes)
 }
 
-// returns an array of bytes that represent the email in json format
+// ToJsonBytes returns an array of bytes that represent the email in json format
 func (mail Mail) ToJsonBytes() ([]byte, error) {
 	return json.Marshal(mail)
 }
 
-// returns an email from an array of bytes that represent the format of the email
+// MailFromJson returns an email from an array of bytes that represent the format of the email
 func MailFromJson(_json []byte) Mail {
 	var mail Mail
 

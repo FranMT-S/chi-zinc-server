@@ -40,3 +40,263 @@ Date,Operation,description,Error
 "Tue, 26 Sep 2023 00:28:25 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:8238->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
 "Tue, 26 Sep 2023 00:32:32 CST",database,There was an error in the database request,invalid parameters entered
 "Tue, 26 Sep 2023 00:34:21 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:24:22 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:08 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:08 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:08 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:09 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:09 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:09 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:10 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:10 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:10 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:10 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:10 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:11 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:12 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:13 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:14 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:30:15 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:31:07 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:31:07 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:31:07 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:31:08 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:31:08 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:31:08 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:31:09 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:31:09 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:31:09 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:31:09 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 22:32:20 CST",database,There was an error in the database request,invalid parameters entered
+"Tue, 26 Sep 2023 23:34:52 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": EOF"
+"Tue, 26 Sep 2023 23:34:57 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 26 Sep 2023 23:35:02 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 26 Sep 2023 23:35:08 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 26 Sep 2023 23:35:13 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Wed, 27 Sep 2023 08:17:10 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": EOF"
+"Wed, 27 Sep 2023 08:17:10 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": EOF"
+"Wed, 27 Sep 2023 08:54:55 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:9928->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Wed, 27 Sep 2023 08:54:58 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:9932->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Wed, 27 Sep 2023 08:55:10 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:9939->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Wed, 27 Sep 2023 08:55:18 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:9953->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Wed, 27 Sep 2023 08:55:27 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:9975->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Thu, 28 Sep 2023 21:17:14 CST",database,There was an error in the database request,invalid parameters entered
+"Thu, 28 Sep 2023 21:17:18 CST",database,There was an error in the database request,invalid parameters entered
+"Thu, 28 Sep 2023 21:17:23 CST",database,There was an error in the database request,invalid parameters entered
+"Thu, 28 Sep 2023 21:18:12 CST",database,There was an error in the database request,invalid parameters entered
+"Thu, 28 Sep 2023 21:18:48 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 10:43:09 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 10:43:13 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 10:43:18 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 10:43:19 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 10:43:45 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 10:46:49 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 11:57:54 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 11:58:11 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 16:21:05 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": EOF"
+"Fri, 29 Sep 2023 16:21:15 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14147->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:21:25 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14153->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:21:35 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14168->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:23:42 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14273->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:23:43 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14276->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:23:53 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14281->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:24:16 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14304->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:24:17 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14307->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:24:27 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14312->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:25:21 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14380->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:25:29 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14387->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:25:30 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14390->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:25:40 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14397->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:25:44 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14403->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:25:52 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14413->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:26:00 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14422->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:26:05 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14426->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:26:06 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14432->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:27:39 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14510->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:34:46 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14790->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:34:48 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14799->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:34:55 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14804->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:35:32 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14835->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:35:42 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14846->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:35:52 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14856->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:36:05 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14866->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:36:15 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14878->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:37:51 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14965->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:37:55 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14972->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:38:05 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:14980->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:39:45 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1086->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:39:48 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1090->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:41:41 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1169->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:41:44 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1176->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:41:52 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1184->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:43:49 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1256->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:50:34 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1621->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:50:57 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1643->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:51:53 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1684->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:51:58 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1691->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:52:05 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1695->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:52:08 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1698->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:52:13 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1703->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:52:35 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1718->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:52:37 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1724->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:52:38 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": read tcp [::1]:1726->[::1]:4080: wsarecv: An existing connection was forcibly closed by the remote host."
+"Fri, 29 Sep 2023 16:53:53 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 16:54:12 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 16:54:25 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 16:54:40 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 16:54:54 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 16:55:02 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 16:55:11 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 16:55:39 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 16:55:41 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 16:55:44 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 16:55:47 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 16:55:55 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 16:56:03 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 17:00:59 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 17:01:06 CST",database,There was an error in the database request,invalid parameters entered
+"Fri, 29 Sep 2023 22:01:36 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:11:30 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:11:45 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:11:47 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:11:49 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:11:59 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:12:01 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:12:04 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:12:07 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:12:10 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:12:15 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:12:28 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:14:37 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:14:41 CST",mails request,from or max must be numbers,invalid parameters entered
+"Sat, 30 Sep 2023 00:34:41 CST",mails request,from or max must be numbers,invalid parameters entered
+"Sat, 30 Sep 2023 00:34:44 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:41:49 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:41:53 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:48:10 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 00:48:14 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 01:00:20 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 01:00:25 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 07:27:55 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 07:27:59 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 07:28:00 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 07:28:06 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 07:28:07 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 07:28:17 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 07:28:21 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 07:46:29 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 07:46:32 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 18:02:49 CST",database,There was an error in the database request,invalid parameters entered
+"Sat, 30 Sep 2023 18:38:25 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sat, 30 Sep 2023 18:49:05 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sat, 30 Sep 2023 18:49:07 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sat, 30 Sep 2023 18:49:10 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sat, 30 Sep 2023 18:49:11 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sat, 30 Sep 2023 18:49:12 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sat, 30 Sep 2023 18:49:13 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sat, 30 Sep 2023 18:49:14 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sat, 30 Sep 2023 18:49:16 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sat, 30 Sep 2023 18:54:28 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sat, 30 Sep 2023 18:54:58 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sat, 30 Sep 2023 18:55:00 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sat, 30 Sep 2023 18:55:03 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sat, 30 Sep 2023 18:55:06 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Sun, 01 Oct 2023 12:46:42 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 12:46:46 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 12:46:49 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 12:46:53 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 12:48:15 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 12:48:18 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 12:48:19 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 12:48:20 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 12:48:27 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 12:55:44 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 12:56:01 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 12:56:04 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 12:56:12 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 13:02:57 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 13:03:04 CST",database,There was an error in the database request,invalid parameters entered
+"Sun, 01 Oct 2023 13:04:21 CST",database,invalid data entered,invalid parameters entered
+"Sun, 01 Oct 2023 13:08:36 CST",database,invalid data entered,invalid parameters entered
+"Sun, 01 Oct 2023 13:10:12 CST",database,invalid data entered,invalid parameters entered
+"Sun, 01 Oct 2023 13:12:53 CST",database,invalid data entered,invalid parameters entered
+"Sun, 01 Oct 2023 13:13:12 CST",database,invalid data entered,invalid parameters entered
+"Sun, 01 Oct 2023 13:15:14 CST",database,invalid data entered,invalid parameters entered
+"Sun, 01 Oct 2023 13:16:36 CST",database,invalid data entered,invalid parameters entered
+"Sun, 01 Oct 2023 13:16:57 CST",database,invalid data entered,invalid parameters entered
+"Sun, 01 Oct 2023 21:11:55 CST",database,invalid data entered,invalid parameters entered
+"Sun, 01 Oct 2023 21:14:30 CST",database,invalid data entered,invalid parameters entered
+"Sun, 01 Oct 2023 21:18:51 CST",database,invalid data entered,invalid parameters entered
+"Sun, 01 Oct 2023 21:49:14 CST",database,invalid data entered,invalid parameters entered
+"Tue, 03 Oct 2023 10:01:00 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:10:34 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:10:37 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:10:42 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:10:44 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:10:45 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:10:47 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:10:55 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:10:57 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:10:57 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:11:00 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:12:17 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:12:20 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:12:34 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:13:02 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:19:47 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:19:58 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:21:09 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:21:13 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:24:08 CST",database,There was an error in the database request,"Post ""http://localhost:4080/api/Test100/_search"": dial tcp [::1]:4080: connectex: No connection could be made because the target machine actively refused it."
+"Tue, 03 Oct 2023 10:37:52 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:37:55 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:37:58 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:40:42 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:40:47 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:50:13 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:50:15 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:50:45 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:51:02 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:51:54 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:52:14 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:52:53 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:54:05 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:57:35 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:59:21 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:59:23 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 10:59:48 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:02:17 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:02:19 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:02:40 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:02:42 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:04:34 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:04:56 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:05:53 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:06:53 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:06:53 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:06:57 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:07:02 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:10:12 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:10:19 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:11:19 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:11:29 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:12:14 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:12:19 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:14:21 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:14:28 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:14:54 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:15:29 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:15:38 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:16:15 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:17:38 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:17:41 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:17:50 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:18:30 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:18:42 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:21:10 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:29:06 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:29:23 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:31:45 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:36:05 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:36:15 CST",database,invalid data entered,invalid data entered
+"Tue, 03 Oct 2023 11:36:40 CST",database,invalid data entered,invalid data entered
